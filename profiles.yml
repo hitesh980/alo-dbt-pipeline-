@@ -1,0 +1,14 @@
+alo_dbt_project:
+  outputs:
+    dev:
+      type: snowflake
+      # Leave account, user, and password blank; Snowflake injects them securely at runtime
+      account: ""
+      user: ""
+      password: ""
+      role: ACCOUNTADMIN
+      warehouse: COMPUTE_WH
+      database: ALO
+      schema: BRONZE
+      threads: 4
+  target: dev
