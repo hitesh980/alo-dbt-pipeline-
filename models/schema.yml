@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: s3_bronze
+    database: ALO
+    schema: BRONZE
+    tables:
+      - name: alo_data
+
+models:
+  - name: stg_delivery_events
+    description: "Parsed staging table for multi-carrier delivery logs."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - unique
+
+      - name: carrier
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['UberDirect', 'DoorDashDrive', 'FedExSameDay']
